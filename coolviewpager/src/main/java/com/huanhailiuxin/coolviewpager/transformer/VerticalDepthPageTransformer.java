@@ -1,14 +1,14 @@
 package com.huanhailiuxin.coolviewpager.transformer;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 /**
- * 对应代码家的DepthPageTransformer,VerticalDepthPageTransformer适用于CoolViewPager在垂直方向滚动的情况
+ * 瀵瑰簲浠ｇ爜瀹剁殑DepthPageTransformer,VerticalDepthPageTransformer閫傜敤浜嶤oolViewPager鍦ㄥ瀭鐩存柟鍚戞粴鍔ㄧ殑鎯呭喌
  *
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/1/26 11:43
  */
 public class VerticalDepthPageTransformer implements ViewPager.PageTransformer {
@@ -36,3 +36,4 @@ public class VerticalDepthPageTransformer implements ViewPager.PageTransformer {
         }
     }
 }
+

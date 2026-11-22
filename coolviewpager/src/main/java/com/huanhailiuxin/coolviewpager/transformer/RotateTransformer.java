@@ -1,12 +1,12 @@
 package com.huanhailiuxin.coolviewpager.transformer;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 /**
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/1/26 11:41
  */
 public class RotateTransformer implements ViewPager.PageTransformer {
@@ -34,3 +34,4 @@ public class RotateTransformer implements ViewPager.PageTransformer {
         }
     }
 }
+

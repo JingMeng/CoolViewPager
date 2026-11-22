@@ -1,15 +1,15 @@
 package com.huanhailiuxin.coolviewpager.transformer;
 
-import android.support.annotation.NonNull;
-import android.support.v4.view.ViewPager;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 /**
- * DefaultVerticalTransformer是CoolViewPager在垂直方向滚动的情况下默认的PageTransformer
+ * DefaultVerticalTransformer鏄疌oolViewPager鍦ㄥ瀭鐩存柟鍚戞粴鍔ㄧ殑鎯呭喌涓嬮粯璁ょ殑PageTransformer
  *
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/1/16 11:31
  */
 
@@ -20,3 +20,4 @@ public class DefaultVerticalTransformer implements ViewPager.PageTransformer {
         page.setTranslationY(page.getHeight() * position);
     }
 }
+

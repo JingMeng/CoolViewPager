@@ -1,27 +1,26 @@
 package com.huanhailiuxin.coolviewpager;
 
-import android.support.annotation.ColorInt;
+import androidx.annotation.ColorInt;
 
 /**
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/1/17 20:52
  *
- * 为CoolViewPager提供自定义属性的设置方法
+ * 涓篊oolViewPager鎻愪緵鑷畾涔夊睘鎬х殑璁剧疆鏂规硶
  */
 
 interface ICoolViewPagerFeature {
     /**
-     * 设置滑动方向
+     * 璁剧疆婊戝姩鏂瑰悜
      *
      * @param scrollMode
      */
     void setScrollMode(CoolViewPager.ScrollMode scrollMode);
 
     /**
-     * 设置是否开启自动滚动,并设置自动滚动时间间隔
-     *
+     * 璁剧疆鏄惁寮€鍚嚜鍔ㄦ粴鍔?骞惰缃嚜鍔ㄦ粴鍔ㄦ椂闂撮棿闅?     *
      * @param autoScroll
      * @param intervalInMillis
      */
@@ -30,43 +29,41 @@ interface ICoolViewPagerFeature {
 
 
     /**
-     * 设置自动滚动方向
+     * 璁剧疆鑷姩婊氬姩鏂瑰悜
      *
      * @param autoScrollDirection
      */
     void setAutoScrollDirection(CoolViewPager.AutoScrollDirection autoScrollDirection);
 
     /**
-     * 在自动滚动开启情况下,自动滚动到下一页
-     */
+     * 鍦ㄨ嚜鍔ㄦ粴鍔ㄥ紑鍚儏鍐典笅,鑷姩婊氬姩鍒颁笅涓€椤?     */
     void autoScrollNextPage();
 
     /**
-     * 设置是否循环滚动
+     * 璁剧疆鏄惁寰幆婊氬姩
      *
      * @param infiniteLoop
      */
     void setInfiniteLoop(boolean infiniteLoop);
 
     /**
-     * 设置是否绘制EdgeEffect
+     * 璁剧疆鏄惁缁樺埗EdgeEffect
      *
      * @param drawEdgeEffect
      */
     void setDrawEdgeEffect(boolean drawEdgeEffect);
 
     /**
-     * 设置EdgeEffect的颜色
-     *
+     * 璁剧疆EdgeEffect鐨勯鑹?     *
      * @param color
      */
     void setEdgeEffectColor(@ColorInt int color);
 
     /**
-     * 设置是否自定义自动滑动耗时,并设置自动滑动耗时毫秒值
-     *
+     * 璁剧疆鏄惁鑷畾涔夎嚜鍔ㄦ粦鍔ㄨ€楁椂,骞惰缃嚜鍔ㄦ粦鍔ㄨ€楁椂姣鍊?     *
      * @param ifSetScrollDuration
      * @param scrollDuration
      */
     void setScrollDuration(boolean ifSetScrollDuration, int... scrollDuration);
 }
+

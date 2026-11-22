@@ -1,6 +1,6 @@
 package com.huanhailiuxin.coolviewpager.transformer;
 
-import android.support.v4.view.ViewPager;
+import androidx.viewpager.widget.ViewPager;
 import android.view.View;
 
 public class ZoomInTransformer implements ViewPager.PageTransformer {
@@ -24,3 +24,4 @@ public class ZoomInTransformer implements ViewPager.PageTransformer {
     }
 
 }
+

@@ -12,7 +12,7 @@
         app:cvp_scrollmode="horizontal"
         app:cvp_infiniteloop="true"
         />
-    <android.support.design.widget.FloatingActionButton
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:layout_width="32dp"
         android:layout_height="32dp"
         android:layout_margin="8dp"

@@ -1,6 +1,6 @@
 package com.huanhailiuxin.coolviewpager;
 
-import android.support.annotation.Keep;
+import androidx.annotation.Keep;
 
 import java.lang.reflect.Field;
 import java.lang.reflect.Method;

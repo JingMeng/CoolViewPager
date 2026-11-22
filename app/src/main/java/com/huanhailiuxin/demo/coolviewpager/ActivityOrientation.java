@@ -1,8 +1,8 @@
 package com.huanhailiuxin.demo.coolviewpager;
 
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
@@ -79,9 +79,9 @@ public class ActivityOrientation extends BaseActivity {
         @NonNull
         @Override
         public Object instantiateItem(@NonNull ViewGroup container, int position) {
-            //必须要先判断,否则报错:java.lang.IllegalStateException: The specified child already has a parent
-            //ViewGroup的addView（）方法不能添加一个已存在父控件的视图,所以在执行前需要判断要添加的View实例是不是存在父控件.
-            //如果存在父控件,需要其父控件先将该View移除掉,再执行addView
+            //蹇呴』瑕佸厛鍒ゆ柇,鍚﹀垯鎶ラ敊:java.lang.IllegalStateException: The specified child already has a parent
+            //ViewGroup鐨刟ddView锛堬級鏂规硶涓嶈兘娣诲姞涓€涓凡瀛樺湪鐖舵帶浠剁殑瑙嗗浘,鎵€浠ュ湪鎵ц鍓嶉渶瑕佸垽鏂娣诲姞鐨刅iew瀹炰緥鏄笉鏄瓨鍦ㄧ埗鎺т欢.
+            //濡傛灉瀛樺湪鐖舵帶浠?闇€瑕佸叾鐖舵帶浠跺厛灏嗚View绉婚櫎鎺?鍐嶆墽琛宎ddView
             if(views.get(position).getParent() != null){
                 ((ViewGroup)views.get(position).getParent()).removeView(views.get(position));
             }
@@ -94,3 +94,4 @@ public class ActivityOrientation extends BaseActivity {
         }
     }
 }
+

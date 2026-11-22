@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.huanhailiuxin.demo.coolviewpager">
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
 
     <application
         android:name=".App"
@@ -10,22 +9,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+        <activity android:name=".MainActivity" android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ActivityOrientation" />
-        <activity android:name=".ActivityEdgeEffectColor" />
-        <activity android:name=".EnableNotifyActivity" />
-        <activity android:name=".ActivityAutoScroll" />
-        <activity android:name=".ActivityPageTransformer"></activity>
+        <activity android:name=".ActivityOrientation" android:exported="true" />>
+        <activity android:name=".ActivityEdgeEffectColor" android:exported="true" />>
+        <activity android:name=".EnableNotifyActivity" android:exported="true" />>
+        <activity android:name=".ActivityAutoScroll" android:exported="true" />>
+        <activity android:name=".ActivityPageTransformer" android:exported="true"></activity>
         <activity
             android:name=".CustomErrorActivity"
             android:label="@string/error_title"
-            android:process=":error_activity">
+            android:process=":error_activity" android:exported="true">
             <!-- You can also use this instead of using CustomActivityOnCrash.setErrorActivityClass(CustomErrorActivity.class); -->
             <!-- <intent-filter> -->
             <!-- <action android:name="cat.ereza.customactivityoncrash.ERROR" /> -->

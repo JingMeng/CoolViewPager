@@ -2,16 +2,16 @@ package com.huanhailiuxin.demo.coolviewpager;
 
 import android.content.Intent;
 import android.graphics.BitmapFactory;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.huanhailiuxin.coolviewpager.CoolViewPager;
 
 /**
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/6/1 16:15
  */
 public class BaseActivity extends AppCompatActivity{

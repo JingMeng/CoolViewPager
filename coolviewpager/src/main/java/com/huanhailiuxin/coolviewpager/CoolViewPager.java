@@ -11,22 +11,22 @@ import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 import android.os.SystemClock;
-import android.support.annotation.CallSuper;
-import android.support.annotation.ColorInt;
-import android.support.annotation.DrawableRes;
-import android.support.annotation.Keep;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.content.ContextCompat;
-import android.support.v4.view.AbsSavedState;
-import android.support.v4.view.AccessibilityDelegateCompat;
-import android.support.v4.view.PagerAdapter;
-import android.support.v4.view.PagerTitleStrip;
-import android.support.v4.view.ViewCompat;
-import android.support.v4.view.ViewPager;
-import android.support.v4.view.WindowInsetsCompat;
-import android.support.v4.view.accessibility.AccessibilityEventCompat;
-import android.support.v4.view.accessibility.AccessibilityNodeInfoCompat;
+import androidx.annotation.CallSuper;
+import androidx.annotation.ColorInt;
+import androidx.annotation.DrawableRes;
+import androidx.annotation.Keep;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.core.content.ContextCompat;
+import androidx.customview.view.AbsSavedState;
+import androidx.core.view.AccessibilityDelegateCompat;
+import androidx.viewpager.widget.PagerAdapter;
+import androidx.viewpager.widget.PagerTitleStrip;
+import androidx.core.view.ViewCompat;
+import androidx.viewpager.widget.ViewPager;
+import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.accessibility.AccessibilityEventCompat;
+import androidx.core.view.accessibility.AccessibilityNodeInfoCompat;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.FocusFinder;
@@ -59,20 +59,18 @@ import java.util.Comparator;
 import java.util.List;
 
 /**
- * 作者:幻海流心
+ * 浣滆€?骞绘捣娴佸績
  * GitHub:https://github.com/HuanHaiLiuXin
- * 邮箱:wall0920@163.com
+ * 閭:wall0920@163.com
  * 2018/1/17 12:08
  *
  * <p>
- * 拷贝自{@link android.support.v4.view.ViewPager},通过修改少量代码实现如下扩展功能:
- *      1:横向、纵向滚动
- *      2:循环滚动
- *      3:自动滚动并设置滚动方向
- *      4:横向、纵向滚动并设置边缘效果颜色
- *      5:通过调用{@link CoolViewPager#notifyDataSetChanged()}实时刷新界面
+ * 鎷疯礉鑷獅@link androidx.viewpager.widget.ViewPager},閫氳繃淇敼灏戦噺浠ｇ爜瀹炵幇濡備笅鎵╁睍鍔熻兘:
+ *      1:妯悜銆佺旱鍚戞粴鍔? *      2:寰幆婊氬姩
+ *      3:鑷姩婊氬姩骞惰缃粴鍔ㄦ柟鍚? *      4:妯悜銆佺旱鍚戞粴鍔ㄥ苟璁剧疆杈圭紭鏁堟灉棰滆壊
+ *      5:閫氳繃璋冪敤{@link CoolViewPager#notifyDataSetChanged()}瀹炴椂鍒锋柊鐣岄潰
  * <p>
- * 一屏展示多页:{@link PagerAdapter#getPageWidth(int)}
+ * 涓€灞忓睍绀哄椤?{@link PagerAdapter#getPageWidth(int)}
  */
 @Keep
 public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
@@ -200,7 +198,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
 
     private EdgeEffect mLeftEdge;
     private EdgeEffect mRightEdge;
-    //添加顶部及底部的边缘效果
+    //娣诲姞椤堕儴鍙婂簳閮ㄧ殑杈圭紭鏁堟灉
     private EdgeEffect mTopEdge;
     private EdgeEffect mBottomEdge;
 
@@ -371,8 +369,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     /**
-     * 滑动方向枚举类
-     */
+     * 婊戝姩鏂瑰悜鏋氫妇绫?     */
     public enum ScrollMode {
         HORIZONTAL(0), VERTICAL(1);
         int id;
@@ -389,8 +386,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     /**
-     * 自动滚动方向枚举类
-     */
+     * 鑷姩婊氬姩鏂瑰悜鏋氫妇绫?     */
     public enum AutoScrollDirection {
         FORWARD(0), BACKWARD(1);
         int id;
@@ -493,7 +489,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
             this.mInfiniteLoop = infiniteLoop;
             if(this.mAdapter != null){
                 if(this.mInfiniteLoop && !(this.mAdapter instanceof LoopPagerAdapterWrapper)){
-                    //对于原生PagerAdapter实例,如果Item数量<=1,则不应该让其循环滚动
+                    //瀵逛簬鍘熺敓PagerAdapter瀹炰緥,濡傛灉Item鏁伴噺<=1,鍒欎笉搴旇璁╁叾寰幆婊氬姩
                     if(this.mAdapter.getCount() > 1){
                         setAdapter(this.mAdapter);
                     }else{
@@ -539,8 +535,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     /**
-     * 如果设置了Adapter,且Adapter中项数大于1,且开启了自动滚动,开启循环滚动
-     */
+     * 濡傛灉璁剧疆浜咥dapter,涓擜dapter涓」鏁板ぇ浜?,涓斿紑鍚簡鑷姩婊氬姩,寮€鍚惊鐜粴鍔?     */
     private void checkAndStartTimer(){
         if(this.mAdapter != null && this.mAdapter.getCount() > 1 && this.mAutoScroll){
             startTimer();
@@ -564,8 +559,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
         timer.isStopped = true;
     }
     /**
-     * 获取在自动滚动开启情况下,当前实例要展示的下一页的索引值
-     *
+     * 鑾峰彇鍦ㄨ嚜鍔ㄦ粴鍔ㄥ紑鍚儏鍐典笅,褰撳墠瀹炰緥瑕佸睍绀虹殑涓嬩竴椤电殑绱㈠紩鍊?     *
      * @return
      */
     private int getAutoScrollNextItem(){
@@ -584,8 +578,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     };
 
     /**
-     * 初始化自定义属性
-     *
+     * 鍒濆鍖栬嚜瀹氫箟灞炴€?     *
      * @param context
      * @param attrs
      */
@@ -624,7 +617,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
         mMaximumVelocity = configuration.getScaledMaximumFlingVelocity();
         mLeftEdge = new EdgeEffect(context);
         mRightEdge = new EdgeEffect(context);
-        //添加顶部及底部的边缘效果
+        //娣诲姞椤堕儴鍙婂簳閮ㄧ殑杈圭紭鏁堟灉
         mTopEdge = new EdgeEffect(context);
         mBottomEdge = new EdgeEffect(context);
 
@@ -641,7 +634,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
         }
 
         ViewCompat.setOnApplyWindowInsetsListener(this,
-                new android.support.v4.view.OnApplyWindowInsetsListener() {
+                new androidx.core.view.OnApplyWindowInsetsListener() {
                     private final Rect mTempRect = new Rect();
 
                     @Override
@@ -711,11 +704,11 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
      * @param adapter Adapter to use
      */
     public void setAdapter(@Nullable PagerAdapter adapter) {
-        //设置Adapter前先停止自动滚动
+        //璁剧疆Adapter鍓嶅厛鍋滄鑷姩婊氬姩
         stopTimer();
         if (mAdapter != null) {
 //            mAdapter.setViewPagerObserver(null);
-            //setViewPagerObserver不是public方法,package外不能调用,使用反射调用
+            //setViewPagerObserver涓嶆槸public鏂规硶,package澶栦笉鑳借皟鐢?浣跨敤鍙嶅皠璋冪敤
             ReflectionUtils.invoke(mAdapter, "setViewPagerObserver", new Class[]{DataSetObserver.class}, new Object[]{null});
             mAdapter.startUpdate(this);
             for (int i = 0; i < mItems.size(); i++) {
@@ -730,7 +723,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
         }
 
         final PagerAdapter oldAdapter = mAdapter;
-        //对于原生PagerAdapter实例,如果Item数量<=1,则不应该让其循环滚动
+        //瀵逛簬鍘熺敓PagerAdapter瀹炰緥,濡傛灉Item鏁伴噺<=1,鍒欎笉搴旇璁╁叾寰幆婊氬姩
         if (mInfiniteLoop && adapter.getCount() > 1){
             mAdapter = new LoopPagerAdapterWrapper(adapter);
             setOnPageChangeListener(onPageChangeListener);
@@ -801,7 +794,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
     public void notifyDataSetChanged(){
         if(this.mAdapter != null){
-            //notifyDataSetChanged前先停止自动滚动
+            //notifyDataSetChanged鍓嶅厛鍋滄鑷姩婊氬姩
             stopTimer();
             mAdapter.notifyDataSetChanged();
             checkAndStartTimer();
@@ -809,9 +802,8 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     /**
-     * 获取当前CoolViewPager实例选中的页面,其在用户提供的原始Adapter中的实际位置,
-     * 在例如需要变更PageIndicator的情况下会用到
-     * @return
+     * 鑾峰彇褰撳墠CoolViewPager瀹炰緥閫変腑鐨勯〉闈?鍏跺湪鐢ㄦ埛鎻愪緵鐨勫師濮婣dapter涓殑瀹為檯浣嶇疆,
+     * 鍦ㄤ緥濡傞渶瑕佸彉鏇碢ageIndicator鐨勬儏鍐典笅浼氱敤鍒?     * @return
      */
     public int getRealCurrentItem(){
         int realCurrentItem = 0;
@@ -1247,10 +1239,10 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
             duration = (int) ((pageDelta + 1) * 100);
         }
         if(this.mScrollDuration > 0){
-            //如果设置过自动滑动耗时,则使用mScrollDuration
+            //濡傛灉璁剧疆杩囪嚜鍔ㄦ粦鍔ㄨ€楁椂,鍒欎娇鐢╩ScrollDuration
             duration = this.mScrollDuration;
         }else{
-            //未设置过,则采用原始逻辑获取duration
+            //鏈缃繃,鍒欓噰鐢ㄥ師濮嬮€昏緫鑾峰彇duration
             duration = Math.min(duration, MAX_SETTLE_DURATION);
         }
 
@@ -2280,7 +2272,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     /**
-     * 将事件原始X,Y坐标进行置换
+     * 灏嗕簨浠跺師濮媂,Y鍧愭爣杩涜缃崲
      *
      * @param event
      * @return
@@ -2297,7 +2289,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     @Override
     public boolean onInterceptTouchEvent(MotionEvent ev) {
         /**
-         * 1:如果滑动方向是垂直方向,则将原始MotionEvent的X、Y坐标进行置换
+         * 1:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢鍘熷MotionEvent鐨刋銆乊鍧愭爣杩涜缃崲
          */
         if (mScrollMode == ScrollMode.VERTICAL) {
             swapTouchEvent(ev);
@@ -2316,8 +2308,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
             if (DEBUG) Log.v(TAG, "Intercept done!");
             resetTouch();
             /**
-             * 2:如果滑动方向是垂直方向,则将1:置换过的X、Y坐标重置为原始值
-             */
+             * 2:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢1:缃崲杩囩殑X銆乊鍧愭爣閲嶇疆涓哄師濮嬪€?             */
             if (mScrollMode == ScrollMode.VERTICAL) {
                 swapTouchEvent(ev);
             }
@@ -2330,8 +2321,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
             if (mIsBeingDragged) {
                 if (DEBUG) Log.v(TAG, "Intercept returning true!");
                 /**
-                 * 2:如果滑动方向是垂直方向,则将1:置换过的X、Y坐标重置为原始值
-                 */
+                 * 2:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢1:缃崲杩囩殑X銆乊鍧愭爣閲嶇疆涓哄師濮嬪€?                 */
                 if (mScrollMode == ScrollMode.VERTICAL) {
                     swapTouchEvent(ev);
                 }
@@ -2340,8 +2330,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
             if (mIsUnableToDrag) {
                 if (DEBUG) Log.v(TAG, "Intercept returning false!");
                 /**
-                 * 2:如果滑动方向是垂直方向,则将1:置换过的X、Y坐标重置为原始值
-                 */
+                 * 2:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢1:缃崲杩囩殑X銆乊鍧愭爣閲嶇疆涓哄師濮嬪€?                 */
                 if (mScrollMode == ScrollMode.VERTICAL) {
                     swapTouchEvent(ev);
                 }
@@ -2381,8 +2370,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
                     mLastMotionY = y;
                     mIsUnableToDrag = true;
                     /**
-                     * 2:如果滑动方向是垂直方向,则将1:置换过的X、Y坐标重置为原始值
-                     */
+                     * 2:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢1:缃崲杩囩殑X銆乊鍧愭爣閲嶇疆涓哄師濮嬪€?                     */
                     if (mScrollMode == ScrollMode.VERTICAL) {
                         swapTouchEvent(ev);
                     }
@@ -2459,8 +2447,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
         mVelocityTracker.addMovement(ev);
 
         /**
-         * 2:如果滑动方向是垂直方向,则将1:置换过的X、Y坐标重置为原始值
-         */
+         * 2:濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢1:缃崲杩囩殑X銆乊鍧愭爣閲嶇疆涓哄師濮嬪€?         */
         if (mScrollMode == ScrollMode.VERTICAL) {
             swapTouchEvent(ev);
         }
@@ -2474,7 +2461,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     @Override
     public boolean onTouchEvent(MotionEvent ev) {
         /**
-         * 如果滑动方向是垂直方向,则将原始MotionEvent的X、Y坐标进行置换
+         * 濡傛灉婊戝姩鏂瑰悜鏄瀭鐩存柟鍚?鍒欏皢鍘熷MotionEvent鐨刋銆乊鍧愭爣杩涜缃崲
          */
         if (mScrollMode == ScrollMode.VERTICAL) {
             swapTouchEvent(ev);
@@ -3534,7 +3521,7 @@ public class CoolViewPager extends ViewGroup implements ICoolViewPagerFeature {
     }
 
     private OnPageChangeListener onPageChangeListener = new OnPageChangeListener() {
-        //mPreviousOffset必须保留,mPreviousOffset==0是防止首尾页切换时候界面闪动的关键
+        //mPreviousOffset蹇呴』淇濈暀,mPreviousOffset==0鏄槻姝㈤灏鹃〉鍒囨崲鏃跺€欑晫闈㈤棯鍔ㄧ殑鍏抽敭
 //        private float mPreviousOffset = -1;
         @Override
         public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
